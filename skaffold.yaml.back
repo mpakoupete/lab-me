@@ -22,33 +22,32 @@ build:
   # must provide a "default repo" using one of the methods described
   # here:
   # https://skaffold.dev/docs/concepts/#image-repository-handling
-  - image: mpakoupete/emailservice
+  - image: emailservice
     context: src/emailservice
-  - image: mpakoupete/productcatalogservice
+  - image: productcatalogservice
     context: src/productcatalogservice
-  - image: mpakoupete/recommendationservice
+  - image: recommendationservice
     context: src/recommendationservice
-  - image: mpakoupete/shippingservice
+  - image: shippingservice
     context: src/shippingservice
-  - image: mpakoupete/checkoutservice
+  - image: checkoutservice
     context: src/checkoutservice
-  - image: mpakoupete/paymentservice
+  - image: paymentservice
     context: src/paymentservice
-  - image: mpakoupete/currencyservice
+  - image: currencyservice
     context: src/currencyservice
-  - image: mpakoupete/cartservice
+  - image: cartservice
     context: src/cartservice/src
     docker:
       dockerfile: Dockerfile
-  - image: mpakoupete/frontend
+  - image: frontend
     context: src/frontend
-  - image: mpakoupete/adservice
+  - image: adservice
     context: src/adservice
   tagPolicy:
     gitCommit: {}
   local:
-    useBuildkit: true
-    push:
+    useBuildkit: false
 deploy:
   kubectl:
     manifests:
@@ -100,7 +99,7 @@ requires:
   - configs: [app]
 build:
   artifacts:
-  - image: mpakoupete/loadgenerator
+  - image: loadgenerator
     context: src/loadgenerator
 deploy:
   kubectl:
